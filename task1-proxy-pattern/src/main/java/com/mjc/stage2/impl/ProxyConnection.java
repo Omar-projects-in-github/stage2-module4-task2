@@ -15,7 +15,7 @@ public class ProxyConnection implements Connection {
     public void reallyClose() {
         if (realConnection != null && !realConnection.isClosed()) {
             realConnection.close();
-            realConnection = null;
+            isClosed = true;
         }
     }
 
@@ -27,6 +27,6 @@ public class ProxyConnection implements Connection {
     }
 
     public boolean isClosed() {
-        return isClosed || (realConnection != null && realConnection.isClosed());
+        return isClosed;
     }
 }
