@@ -20,11 +20,11 @@ public class ProxyConnection implements Connection {
     }
 
     public void close() {
-        ConnectionPool.getInstance().releaseConnection(this);
         this.isClosed = true;
+        ConnectionPool.getInstance().releaseConnection(this);
     }
 
     public boolean isClosed() {
-        return isClosed || realConnection.isClosed();
+        return isClosed;
     }
 }
